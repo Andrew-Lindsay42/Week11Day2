@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Library {
     private String name;
@@ -37,5 +38,19 @@ public class Library {
             return this.stock.remove(i);
         }
         return null;
+    }
+
+    public HashMap<String, Integer> countGenres() {
+        HashMap<String, Integer> result = new HashMap<String, Integer>();
+        for (Book book : this.stock) {
+            String genre = book.getGenre();
+            if (result.containsKey(genre)){
+                int i = result.get(genre);
+                result.put(genre, i += 1);
+            } else {
+                result.put(genre, 1);
+            }
+        }
+        return result;
     }
 }
