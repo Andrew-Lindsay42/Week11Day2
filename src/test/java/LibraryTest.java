@@ -4,10 +4,12 @@ import static org.junit.Assert.assertEquals;
 
 public class LibraryTest {
     Library library;
+    Book book;
 
     @Before
     public void before(){
         library = new Library("Library of Alexandria", 3);
+        book = new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy");
     }
 
     @Test
@@ -27,14 +29,12 @@ public class LibraryTest {
 
     @Test
     public void canAddBook(){
-        Book book = new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy");
         library.addBook(book);
         assertEquals(1, library.checkStock());
     }
 
     @Test
     public void cannotAddBookIfMaxCapacity(){
-        Book book = new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy");
         library.addBook(book);
         library.addBook(book);
         library.addBook(book);
@@ -44,7 +44,6 @@ public class LibraryTest {
 
     @Test
     public void canRemoveBook(){
-        Book book = new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy");
         library.addBook(book);
         library.addBook(book);
         library.removeBook(book);
