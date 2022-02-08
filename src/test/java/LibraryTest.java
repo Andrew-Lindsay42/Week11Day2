@@ -7,12 +7,17 @@ public class LibraryTest {
 
     @Before
     public void before(){
-        library = new Library("Library of Alexandria");
+        library = new Library("Library of Alexandria", 3);
     }
 
     @Test
     public void hasName(){
         assertEquals("Library of Alexandria", library.getName());
+    }
+
+    @Test
+    public void hasCapacity(){
+        assertEquals(3, library.getCapacity());
     }
 
     @Test
@@ -25,6 +30,16 @@ public class LibraryTest {
         Book book = new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy");
         library.addBook(book);
         assertEquals(1, library.checkStock());
+    }
+
+    @Test
+    public void cannotAddBookIfMaxCapacity(){
+        Book book = new Book("The Hobbit", "J.R.R. Tolkien", "Fantasy");
+        library.addBook(book);
+        library.addBook(book);
+        library.addBook(book);
+        library.addBook(book);
+        assertEquals(3, library.checkStock());
     }
 
     @Test
