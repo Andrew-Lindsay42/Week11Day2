@@ -23,13 +23,19 @@ public class Library {
         return this.capacity;
     }
 
-    public void addBook(Book book){
+    public boolean addBook(Book book){
         if (checkStock() < getCapacity()){
             this.stock.add(book);
+            return true;
         }
+        return false;
     }
 
-    public void removeBook(Book book){
-        this.stock.remove(book);
+    public Book removeBook(Book book){
+        int i = this.stock.indexOf(book);
+        if (i >= 0) {
+            return this.stock.remove(i);
+        }
+        return null;
     }
 }
