@@ -14,7 +14,7 @@ public class LibraryTest {
     public void hasName(){
         assertEquals("Library of Alexandria", library.getName());
     }
-    
+
     @Test
     public void stockStartsAtZero(){
         assertEquals(0, library.checkStock());
