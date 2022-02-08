@@ -7,9 +7,14 @@ public class LibraryTest {
 
     @Before
     public void before(){
-        library = new Library();
+        library = new Library("Library of Alexandria");
     }
 
+    @Test
+    public void hasName(){
+        assertEquals("Library of Alexandria", library.getName());
+    }
+    
     @Test
     public void stockStartsAtZero(){
         assertEquals(0, library.checkStock());
